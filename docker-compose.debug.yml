@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  iot_gateway:
+    image: iot_gateway
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000

@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  iot_gateway:
+    image: iot_gateway
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - nerves-firmware.prod.env
+    volumes:
+      - ./app:/app #directory for your app, could be an umbrella app
+      - /app/iot_gateway_firmware/deps
+      - ./priv/firmware/hub:/app/iot_gateway_firmware/_images
+      - ./priv/build/hub:/app/iot_gateway_firmware/_build
+      #- ./priv/build/hub:/root/.nerves
+    working_dir: /app/iot_gateway_firmware
+volumes:
+  nerves-data:
+   driver: local
