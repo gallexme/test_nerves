@@ -1,6 +1,6 @@
-FROM ubuntu:trusty
+FROM ubuntu:latest
 
-MAINTAINER Fabian Fink <marcelocg@gmail.com>
+
 
 # Elixir requires UTF-8
 RUN apt-get update && apt-get upgrade -y && apt-get install locales && locale-gen en_US.UTF-8
@@ -21,7 +21,7 @@ RUN apt-get install -y curl wget git make sudo \
     # http://blog.danielberkompas.com
     && touch /etc/init.d/couchdb \
     # install latest elixir package
-    && apt-get install -y elixir ssh-askpass squashfs-tools erlang-dialyzer erlang-parsetools git  g++ libssl-dev libncurses5-dev bc m4 make unzip cmake python erlang-dev \
+    && apt-get install -y elixir ssh-askpass squashfs-tools erlang-dialyzer erlang-parsetools build-essential git  g++ libssl-dev libncurses5-dev bc m4 make unzip cmake python erlang-dev \
     # clean up after ourselves
     && apt-get clean
 
